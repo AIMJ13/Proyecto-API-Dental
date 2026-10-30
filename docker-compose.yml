@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dental_house_api
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=${DB_SERVER:-host.docker.internal},${DB_PORT:-1433};Database=${DB_NAME:-Dental_House2026};User Id=${DB_USER:-sa};Password=${DB_PASSWORD:-AlvaroyMiurell13};TrustServerCertificate=True;
+      - JwtSettings__SecretKey=${JWT_SECRET:-DentalPrueba@2026_SuperSecretKey_MustBe32CharsMin!}
+      - JwtSettings__Issuer=${JWT_ISSUER:-https://api.dentalprueba.com}
+      - JwtSettings__Audience=${JWT_AUDIENCE:-https://dentalprueba.com}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

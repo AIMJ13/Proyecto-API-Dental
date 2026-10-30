@@ -1,0 +1,10 @@
+[Bb]in/
+[Oo]bj/
+[Tt]emp/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.dockerignore
+cadenas_conexion.txt
